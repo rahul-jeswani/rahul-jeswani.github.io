@@ -3,12 +3,12 @@ entries:
   wlc:
   - apiVersion: v2
     appVersion: 7.5.0
-    created: "2020-11-06T19:20:59.061032079+05:30"
+    created: "2020-11-06T19:34:03.688919471+05:30"
     description: A Helm chart for Kubernetes
     digest: 2a0fe7e0d7cfcabadc11a83b1b62992ce12fbbd1017ee657af6c2952903fb58d
     name: wlc
     type: application
     urls:
-    - /home/rahulj/rahul-jeswani.github.io/wlc-0.1.0.tgz
+    - https://github.com/rahul-jeswani/rahul-jeswani.github.io/wlc-0.1.0.tgz
     version: 0.1.0
-generated: "2020-11-06T19:20:59.058819911+05:30"
+generated: "2020-11-06T19:34:03.68756416+05:30"
