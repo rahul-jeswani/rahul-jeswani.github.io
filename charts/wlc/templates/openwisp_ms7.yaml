@@ -1,0 +1,84 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"
+  labels:
+    app: openwisp
+  name: openwisp-pvc
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: openwisp
+  name: openwisp
+spec:
+  type: ClusterIP
+  ports:
+  - name: "8000"
+    port: 8000
+  - name: "9187"
+    port: 9187
+  selector:
+    app: openwisp
+
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: openwisp
+  name: openwisp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openwisp
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: openwisp
+    spec:
+      containers:
+      - command: ["/bin/bash", "/home/openwisp/start.sh"]
+        envFrom:
+        - configMapRef:
+            name: wlc
+        image: openwisp:0.7.1
+        name: openwisp
+        ports:
+        - containerPort: 8000
+        - containerPort: 9187
+        resources: {}
+        volumeMounts:
+        - mountPath: /home/openwisp/
+          name: openwisp-hostpath
+          subPath: home
+        - mountPath: /home/ap_location_map
+          name: openwisp-hostpathnfs
+          subPath: ap_location_map
+      restartPolicy: Always
+      volumes:
+      - name: openwisp-hostpathnfs
+        hostPath:
+          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/
+          type: Directory
+      - name: openwisp-hostpath
+        hostPath:
+          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/openwisp
+          type: Directory
