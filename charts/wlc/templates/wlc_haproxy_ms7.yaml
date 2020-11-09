@@ -63,16 +63,14 @@ spec:
         volumeMounts:
         - mountPath: /home/wlclb
           name: wlclb-hostpath
-          subPath: home
+          subPath: wlc-server/wlc/wlclb/home
         - mountPath: /home/empty
           name: wlclb-hostpath
-          subPath: empty
+          subPath: wlc-server/wlc/wlclb/empty
       restartPolicy: Always
       volumes:
       - name: wlclb-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/wlclb
-          type: Directory
-
+        persistentVolumeClaim:
+           claimName: shared-nfs-pvc
 ---
 

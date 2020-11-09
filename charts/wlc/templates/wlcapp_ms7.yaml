@@ -73,23 +73,21 @@ spec:
         volumeMounts:
         - mountPath: /home/wlcapp
           name: wlcapp-hostpath
-          subPath: home
+          subPath: wlc-server/wlc/wlcapp/home
         - mountPath: /opt/app-root/src/reports
           name: wlcapp-hostpath
-          subPath: reports
+          subPath: wlc-server/wlc/wlcapp/home/reports
         - mountPath: /home/ap_location_map
           name: wlc-hostpath
-          subPath: ap_location_map
+          subPath: wlc-server/wlc/ap_location_map
       restartPolicy: Always
       volumes:
       - name: wlcapp-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/wlcapp
-          type: Directory
+        persistentVolumeClaim:
+           claimName: shared-nfs-pvc
       - name: wlc-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts
-          type: Directory
+        persistentVolumeClaim:
+           claimName: shared-nfs-pvc
 
 ---
 

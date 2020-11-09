@@ -46,11 +46,9 @@ spec:
         volumeMounts:
         - mountPath: /home/grafana
           name: grafana-hostpath
-          subPath: home
+          subPath: wlc-server/wlc/grafana/home
       restartPolicy: Always
       volumes:
       - name: grafana-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/grafana
-          type: Directory
-
+        persistentVolumeClaim:
+            claimName: shared-nfs-pvc

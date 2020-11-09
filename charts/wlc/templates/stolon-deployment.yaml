@@ -234,23 +234,41 @@ spec:
           volumeMounts:
             - mountPath: /stolon-data
               name: data
+              subPath: stolon-data
             - mountPath: /etc/secrets/stolon
               name: stolon
       volumes:
         - name: stolon
           secret:
             secretName: stolon
+        - name: data
+          persistentVolumeClaim:
+            claimName: shared-nfs-pvc
+
   # Define your own volumeClaimTemplate. This example uses dynamic PV provisioning with a storage class named "standard" (so it will works by default with minikube)
   # In production you should use your own defined storage-class and configure your persistent volumes (statically or dynamically using a provisioner, see related k8s doc).
-  volumeClaimTemplates:
-    - metadata:
-        name: data
-        annotations:
-           volume.beta.kubernetes.io/storage-class: managed-nfs-storage
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 512Mi
+#  volumeClaimTemplates:
+#    - metadata:
+#        name: data
+#        annotations:
+#           volume.beta.kubernetes.io/storage-class: managed-nfs-storage
+#      spec:
+#        accessModes: ["ReadWriteOnce"]
+#        resources:
+#          requests:
+#            storage: 512Mi
+---  
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: nfs-data-pvc
+#spec:
+#  accessModes:
+#    - ReadWriteMany
+#  storageClassName: longhorn-nfs
+#  resources:
+#    requests:
+#      storage: 512Mi
+
 ---
 

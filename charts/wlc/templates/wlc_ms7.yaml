@@ -68,14 +68,12 @@ spec:
         volumeMounts:
         - mountPath: /home/wlc
           name: wlc-hostpath
-          subPath: home
+          subPath: wlc-server/wlc/wlc/home
         - mountPath: /etc/nginx
           name: wlc-hostpath
-          subPath: conf
+          subPath: wlc-server/wlc/wlc/home/conf
       restartPolicy: Always
       volumes:
       - name: wlc-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/wlc
-          type: Directory
-
+        persistentVolumeClaim:
+           claimName: shared-nfs-pvc

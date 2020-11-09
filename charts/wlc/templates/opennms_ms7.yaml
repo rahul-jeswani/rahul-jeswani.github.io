@@ -4,15 +4,29 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     app: opennms
-  annotations:
-    volume.beta.kubernetes.io/storage-class: managed-nfs-storage
   name: opennms-pvc
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   resources:
     requests:
-      storage: 50Gi
+      storage: 20Gi
+
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  labels:
+#    app: opennms
+#  annotations:
+#    volume.beta.kubernetes.io/storage-class: managed-nfs-storage
+#  name: opennms-pvc
+#spec:
+#  accessModes:
+#    - ReadWriteOnce
+#  resources:
+#    requests:
+#      storage: 50Gi
 
 ---
 apiVersion: v1
@@ -100,25 +114,25 @@ spec:
           name: opennms-data
         - mountPath: /opt/opennms-etc-overlay
           name: opennms-hostpath
-          subPath: etc-overlay
+          subPath: opennsm/etc-overlay
         - mountPath: /opt/opennms-jetty-webinf-overlay
           name: opennms-hostpath
-          subPath: jetty-webinf-overlay
+          subPath: opennms/jetty-webinf-overlay
         - mountPath: /opt/opennms-overlay
           name: opennms-hostpath
-          subPath: overlay
+          subPath: opennms/overlay
         - mountPath: /opt/opennms/assets
           name: opennms-hostpath
-          subPath: assets
+          subPath: opennms/assets
         - mountPath: /home/opennms.h
           name: opennms-hostpath
-          subPath: home
+          subPath: opennms/home
         - mountPath: /home/ap_location_map
           name: opennms-hostpathnfs
-          subPath: ap_location_map
+          subPath: wlc-server/wlc/ap_location_map
         - mountPath: /home/import_location.properties
           name: opennms-hostpath
-          subPath: import_location/import_location.properties
+          subPath: opennms/import_location/import_location.properties
 #        - mountPath: /home/branding
 #          name: opennms-hostpath
 #          subPath: branding
@@ -128,13 +142,10 @@ spec:
         persistentVolumeClaim:
           claimName: opennms-pvc
       - name: opennms-hostpathnfs
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts
-          type: Directory
+        persistentVolumeClaim:
+          claimName: shared-nfs-pvc
       - name: opennms-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/opennms
-          type: Directory
-
+        persistentVolumeClaim:
+          claimName: shared-nfs-pvc
 ---
 

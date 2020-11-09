@@ -52,13 +52,14 @@ spec:
         volumeMounts:
         - mountPath: /home/logstash
           name: syslog-hostpath
-          subPath: home
+          subPath: wlc-server/wlc/logstash/home
       restartPolicy: Always
       volumes:
       - name: syslog-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/logstash
-          type: Directory
+      volumes:
+      - name: collectd-hostpath
+        persistentVolumeClaim:
+            claimName: shared-nfs-pvc
 
 ---
 

@@ -50,11 +50,10 @@ spec:
         volumeMounts:
         - mountPath: /home/collectd
           name: collectd-hostpath
-          subPath: home
+          subPath: wlc-server/wlc/collectd/home
       restartPolicy: Always
       volumes:
       - name: collectd-hostpath
-        hostPath:
-          path: /home/wlc-server1/wlc_yaml/wlc_yaml/scripts/collectd/
-          type: Directory
+        persistentVolumeClaim:
+            claimName: shared-nfs-pvc
 
