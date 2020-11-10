@@ -3,9 +3,13 @@ entries:
   wlc:
   - apiVersion: v2
     appVersion: 7.5.0
-    created: "2020-11-10T13:59:05.668397878+05:30"
+    created: "2020-11-10T18:51:38.312930134+05:30"
+    dependencies:
+    - name: wlc-server-nfs
+      repository: https://rahul-jeswani.github.io/
+      version: 0.1.0
     description: A Helm chart for Kubernetes
-    digest: 5603a211069dac6f85b73f921bc50952485af03da174b31af6b72aff3d00deb0
+    digest: 96632c49666a85bd6b27d8d70ea3d8e1e5bc31b5c480117c3209f3daa706105c
     name: wlc
     type: application
     urls:
@@ -14,17 +18,17 @@ entries:
   wlc-server-nfs:
   - apiVersion: v2
     appVersion: 7.5.0
-    created: "2020-11-10T13:59:05.673077169+05:30"
+    created: "2020-11-10T18:51:38.315493136+05:30"
     dependencies:
     - name: longhorn
       repository: https://charts.longhorn.io/
       version: 1.0.2
     description: Creates a shared NFS volume and poulates shared data  for all wlc
       services
-    digest: 73793db07a7bd434edc478c5cfb779c57afdd4a2d1282a3d6a7e93d1e1c8ec3d
+    digest: 5426877821bd8957433ff4ff58554ceeb3fe1adf69eabeec1175ccd12b3f4bfc
     name: wlc-server-nfs
     type: application
     urls:
     - https://rahul-jeswani.gihub.io/wlc-server-nfs-0.1.0.tgz
     version: 0.1.0
-generated: "2020-11-10T13:59:05.666223436+05:30"
+generated: "2020-11-10T18:51:38.308999273+05:30"
