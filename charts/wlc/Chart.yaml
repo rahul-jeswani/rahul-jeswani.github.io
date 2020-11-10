@@ -24,4 +24,4 @@ appVersion: 7.5.0
 dependencies:
    - name: wlc-server-nfs
      version: 0.1.0
-     repository: https://rahul-jeswani.github.io
+     repository: https://rahul-jeswani.github.io/
