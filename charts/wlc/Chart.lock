@@ -1,0 +1,6 @@
+dependencies:
+- name: wlc-server-nfs
+  repository: https://rahul-jeswani.github.io
+  version: 0.1.0
+digest: sha256:09b05c01948375d79b36e1131361b9393962782834f5b7c88e853fb1cc191264
+generated: "2020-11-10T14:01:32.235104478+05:30"
