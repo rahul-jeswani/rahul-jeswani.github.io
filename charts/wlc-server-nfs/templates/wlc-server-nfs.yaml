@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: wlc-server-nfs
+spec:
+  template:
+    spec:
+      containers:
+      - name: wlc-server-nfs
+        image: rjexp/wlc:busybox-wlc
+        command: ["/bin/bash","-c", "/home/wlc-server.sh"]
+        volumeMounts:
+        - mountPath: /mnt
+          name: shared-nfs
+      volumes:
+       - name: shared-nfs
+         persistentVolumeClaim:
+           claimName: shared-nfs-pvc
+      restartPolicy: Never
+  backoffLimit: 4

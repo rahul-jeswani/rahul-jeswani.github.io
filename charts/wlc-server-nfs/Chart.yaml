@@ -1,6 +1,6 @@
 apiVersion: v2
-name: wlc
-description: A Helm chart for Kubernetes
+name: wlc-server-nfs
+description: Creates a shared NFS volume and poulates shared data  for all wlc services
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -22,6 +22,6 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 appVersion: 7.5.0
 dependencies:
-   - name: wlc-server-nfs
-     version: 0.1.0
-     repository: https://rahul-jeswani.github.io
+  - name: longhorn
+    version: 1.0.2
+    repository: https://charts.longhorn.io/
