@@ -56,8 +56,6 @@ spec:
       restartPolicy: Always
       volumes:
       - name: syslog-hostpath
-      volumes:
-      - name: collectd-hostpath
         persistentVolumeClaim:
             claimName: shared-nfs-pvc
 
