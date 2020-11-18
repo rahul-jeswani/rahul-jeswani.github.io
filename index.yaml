@@ -3,7 +3,7 @@ entries:
   wlc:
   - apiVersion: v2
     appVersion: 7.5.0
-    created: "2020-11-18T19:02:07.911320139+05:30"
+    created: "2020-11-18T19:17:28.598787388+05:30"
     dependencies:
     - name: wlc-server-nfs
       repository: https://rahul-jeswani.github.io/
@@ -13,22 +13,22 @@ entries:
     name: wlc
     type: application
     urls:
-    - https://rahul-jeswani.gihthub.io/charts/wlc-0.1.0.tgz
+    - https://rahul-jeswani.github.io/charts/wlc-0.1.0.tgz
     version: 0.1.0
   wlc-server-nfs:
   - apiVersion: v2
     appVersion: 7.5.0
-    created: "2020-11-18T19:02:07.915766952+05:30"
+    created: "2020-11-18T19:17:28.603435645+05:30"
     dependencies:
     - name: longhorn
       repository: https://charts.longhorn.io/
       version: 1.0.2
     description: Creates a shared NFS volume and poulates shared data  for all wlc
       services
-    digest: c5e32a994b47bee892bb778d0080da0a7b0ddb106a65fbdce1d22c494bbb1511
+    digest: 1e729b48ba74056b1a2a474e4fa399f4a594fa482c144b235391abc35ca59a37
     name: wlc-server-nfs
     type: application
     urls:
-    - https://rahul-jeswani.gihthub.io/charts/wlc-server-nfs-0.1.0.tgz
+    - https://rahul-jeswani.github.io/charts/wlc-server-nfs-0.1.0.tgz
     version: 0.1.0
-generated: "2020-11-18T19:02:07.90455036+05:30"
+generated: "2020-11-18T19:17:28.592004416+05:30"
