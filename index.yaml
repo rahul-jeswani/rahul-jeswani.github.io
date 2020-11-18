@@ -3,13 +3,13 @@ entries:
   wlc:
   - apiVersion: v2
     appVersion: 7.5.0
-    created: "2020-11-18T19:17:28.598787388+05:30"
+    created: "2020-11-18T19:23:11.553358654+05:30"
     dependencies:
     - name: wlc-server-nfs
       repository: https://rahul-jeswani.github.io/
       version: 0.1.0
     description: A Helm chart for Kubernetes
-    digest: ef472eee1b5c23b90f70cae3ef307f5d3f05643a539a2cef93a7c078abf765b8
+    digest: 5afd23d5c887c0dc8ea138501303774fbc5cb4205c53c614451346cd70908003
     name: wlc
     type: application
     urls:
@@ -18,7 +18,7 @@ entries:
   wlc-server-nfs:
   - apiVersion: v2
     appVersion: 7.5.0
-    created: "2020-11-18T19:17:28.603435645+05:30"
+    created: "2020-11-18T19:23:11.558031668+05:30"
     dependencies:
     - name: longhorn
       repository: https://charts.longhorn.io/
@@ -31,4 +31,4 @@ entries:
     urls:
     - https://rahul-jeswani.github.io/charts/wlc-server-nfs-0.1.0.tgz
     version: 0.1.0
-generated: "2020-11-18T19:17:28.592004416+05:30"
+generated: "2020-11-18T19:23:11.546452594+05:30"
